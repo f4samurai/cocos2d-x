@@ -307,6 +307,9 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
         Cocos2dxEGLConfigChooser chooser = new Cocos2dxEGLConfigChooser(this.mGLContextAttrs);
         glSurfaceView.setEGLConfigChooser(chooser);
 
+        // Camera対応（SurfaceViewの描画順はsetZOrderMediaOverlayかsetZOrderOnTopで制御できる）
+        glSurfaceView.setZOrderMediaOverlay(true);
+
         return glSurfaceView;
     }
 

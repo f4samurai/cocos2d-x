@@ -1305,17 +1305,18 @@ void DataReaderHelper::addDataFromJsonCache(const std::string& fileContent, Data
             }
 
             std::string filePath = path;
-            filePath = filePath.erase(filePath.find_last_of('.'));
-
-            if (dataInfo->asyncStruct)
+            filePath = filePath.erase(filePath.find_last_of("."));
+            
+            std::string plistPath = filePath + ".plist";
+            std::string pngPath =  filePath + ".png";
+            if (FileUtils::getInstance()->isFileExist(dataInfo->baseFilePath + plistPath)
+                && FileUtils::getInstance()->isFileExist(dataInfo->baseFilePath + pngPath))
             {
-                dataInfo->configFileQueue.push(filePath);
-            }
-            else
-            {
-                std::string plistPath = filePath + ".plist";
-                std::string pngPath =  filePath + ".png";
-                if (FileUtils::getInstance()->isFileExist(dataInfo->baseFilePath + plistPath) && FileUtils::getInstance()->isFileExist(dataInfo->baseFilePath + pngPath))
+                if (dataInfo->asyncStruct)
+                {
+                    dataInfo->configFileQueue.push(filePath);
+                }
+                else
                 {
                     ValueMap dict = FileUtils::getInstance()->getValueMapFromFile(dataInfo->baseFilePath + plistPath);
                     if (dict.find("particleLifespan") != dict.end()) continue;

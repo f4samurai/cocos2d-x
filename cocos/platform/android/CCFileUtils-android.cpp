@@ -153,6 +153,11 @@ std::string FileUtilsAndroid::getNewFilename(const std::string &filename) const
     return newFileName;
 }
 
+string FileUtilsAndroid::getDownloadResourcePath(const std::string& dirname) const
+{
+    return getWritablePath() + dirname + "/";
+}
+
 bool FileUtilsAndroid::isFileExistInternal(const std::string& strFilePath) const
 {
     

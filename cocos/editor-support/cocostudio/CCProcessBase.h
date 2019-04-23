@@ -126,6 +126,7 @@ public:
     virtual float getCurrentPercent() const { return _currentPercent; }
     virtual int getRawDuration() const { return _rawDuration; }
 
+    virtual float getCurrentFrame() const { return _currentFrame; }
 protected:
 
     virtual void gotoFrame(int frameIndex);

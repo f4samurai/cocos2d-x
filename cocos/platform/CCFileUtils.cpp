@@ -312,12 +312,14 @@ public:
         case SAX_REAL:
         case SAX_STRING:
             {
-                if (curState == SAX_DICT)
+                if (curState == SAX_DICT && _curKey.empty())
                 {
-                    CCASSERT(!_curKey.empty(), "key not found : <integer/real>");
+                    CCASSERT(false, "key not found : <integer/real>");
                 }
-
-                _curValue.append(text);
+                else
+                {
+                    _curValue.append(text);
+                }
             }
             break;
         default:
@@ -595,9 +597,19 @@ bool FileUtils::writeDataToFile(const Data& data, const std::string& fullPath) c
         CC_BREAK_IF(!fp);
         size = data.getSize();
 
-        fwrite(data.getBytes(), size, 1, fp);
+        size_t count = fwrite(data.getBytes(), size, 1, fp);
+        if (count < 1)
+        {
+            fclose(fp);
+            CCLOG("store fwrite failed.");
+            break;
+        }
 
-        fclose(fp);
+        if (fclose(fp) == EOF)
+        {
+            CCLOG("store fclose failed.");
+            break;
+        }
 
         return true;
     } while (0);

@@ -64,7 +64,9 @@ public:
     bool init() override;
 
     virtual std::string getNewFilename(const std::string &filename) const override;
-
+    
+    virtual std::string getDownloadResourcePath(const std::string& dirname) const override;
+        
     virtual FileUtils::Status getContents(const std::string& filename, ResizableBuffer* buffer) const override;
 
     virtual std::string getWritablePath() const override;

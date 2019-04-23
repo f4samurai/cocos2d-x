@@ -248,6 +248,22 @@ std::string FileUtilsApple::getWritablePath() const
     return strRet;
 }
 
+std::string FileUtilsApple::getDownloadResourcePath(const std::string& dirname) const
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+    NSString *path = [paths objectAtIndex:0];
+    NSString *name = [NSString stringWithCString:dirname.c_str() encoding:NSUTF8StringEncoding];
+    path = [NSString stringWithFormat: @"%@/%@/", path, name];
+    return [path UTF8String];
+}
+
+void FileUtilsApple::unsaveCloud(const std::string& path)
+{
+    NSString* str = [NSString stringWithFormat:@"%s", path.c_str()];
+    NSURL* url = [NSURL fileURLWithPath:str];
+    [url setResourceValue: [NSNumber numberWithBool: YES] forKey:NSURLIsExcludedFromBackupKey error: nil];
+}
+
 bool FileUtilsApple::isFileExistInternal(const std::string& filePath) const
 {
     if (filePath.empty())

@@ -470,7 +470,18 @@ public:
      *  @return  The path that can be write/read a file in
      */
     virtual std::string getWritablePath() const = 0;
-
+        
+    /**
+     *  Gets the download resource path.
+     *  @return  The path that can be write/read a file in
+     */
+     virtual std::string getDownloadResourcePath(const std::string& dirname) const = 0;
+    
+    /**
+     *  no use iCloud backup (only iOS)
+     */
+    virtual void unsaveCloud(const std::string& path){}
+    
     /**
      *  Sets writable path.
      */

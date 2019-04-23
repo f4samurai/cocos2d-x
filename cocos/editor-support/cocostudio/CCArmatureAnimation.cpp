@@ -556,5 +556,17 @@ void ArmatureAnimation::updateMovementList()
         _onMovementList = true;
     }
 }
+    
+/**
+ *  アニメのフレーム数取得. 140730Kur.
+ */
+int ArmatureAnimation::getFrame(const char *animationName)
+{
+    CCAssert(_animationData, "m_pAnimationData can not be null");
+    
+    MovementData* movementData = _animationData->getMovement(animationName);
+    CCAssert(movementData, "m_pMovementData can not be null");
+    return movementData->duration;
+}
 
 }
