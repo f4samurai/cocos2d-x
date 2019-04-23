@@ -235,6 +235,9 @@ public:
      * @param userObject    A user assigned Object
      */
     virtual void setUserObject(Ref *userObject);
+    
+    virtual int getFrame(const char *animationName);    // 140730Kur.
+
 protected:
 
     /**

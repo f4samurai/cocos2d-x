@@ -69,9 +69,13 @@ void Json_dispose (Json* json);
 
 /* Get item "string" from object. Case insensitive. */
 Json* Json_getItem (Json* json, const char* string);
+Json* Json_getItemAt (Json* json, int index);
 const char* Json_getString (Json* json, const char* name, const char* defaultValue);
+const char* Json_getStringNull (Json* object, const char* name, const char* defaultValue);
 float Json_getFloat (Json* json, const char* name, float defaultValue);
 int Json_getInt (Json* json, const char* name, int defaultValue);
+int Json_getIntNull (Json* value, const char* name, int defaultValue);
+int Json_getBooleanInt (Json* value, const char* name, int defaultValue);
 
 /* For analysing failed parses. This returns a pointer to the parse error. You'll probably need to look a few chars back to make sense of it. Defined when Json_create() returns 0. 0 when Json_create() succeeds. */
 const char* Json_getError (void);

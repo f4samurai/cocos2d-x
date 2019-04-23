@@ -93,7 +93,7 @@ void Json_dispose (Json *c) {
 /* Parse the input text to generate a number, and populate the result into item. */
 static const char* parse_number (Json *item, const char* num) {
 	char * endptr;
-	float n;
+	double n;	
 
 	/* Using strtod and strtof is slightly more permissive than RFC4627,
 	 * accepting for example hex-encoded floating point, but either
@@ -101,17 +101,13 @@ static const char* parse_number (Json *item, const char* num) {
 	 *
 	 * We also already know that this starts with [-0-9] from parse_value.
 	 */
-#if __STDC_VERSION__ >= 199901L
-	n = strtof(num, &endptr);
-#else
-	n = (float)strtod( num, &endptr );
-#endif
+	n = strtod( num, &endptr);	 
 	/* ignore errno's ERANGE, which returns +/-HUGE_VAL */
 	/* n is 0 on any other error */
 
 	if (endptr != num) {
 		/* Parse success, number found. */
-		item->valueFloat = n;
+		item->valueFloat = (float)n;		
 		item->valueInt = (int)n;
 		item->type = Json_Number;
 		return endptr;
@@ -409,10 +405,26 @@ Json *Json_getItem (Json *object, const char* string) {
 	return c;
 }
 
+Json* Json_getItemAt (Json* object, int index) {
+    Json *c = object->child;
+    int count = 0;
+    while (c && count != index) {
+        c = c->next;
+        count++;
+    }
+    return c;
+}
+
 const char* Json_getString (Json* object, const char* name, const char* defaultValue) {
 	object = Json_getItem(object, name);
 	if (object) return object->valueString;
 	return defaultValue;
+}
+
+const char* Json_getStringNull (Json* object, const char* name, const char* defaultValue) {
+    object = Json_getItem(object, name);
+    if (object && (object->valueString != NULL)) return object->valueString;
+    return defaultValue;
 }
 
 float Json_getFloat (Json* value, const char* name, float defaultValue) {
@@ -423,4 +435,26 @@ float Json_getFloat (Json* value, const char* name, float defaultValue) {
 int Json_getInt (Json* value, const char* name, int defaultValue) {
 	value = Json_getItem(value, name);
 	return value ? value->valueInt : defaultValue;
+}
+
+int Json_getIntNull (Json* value, const char* name, int defaultValue) {
+    value = Json_getItem(value, name);
+    if ((value == NULL)||(value->type == Json_NULL)) {
+        value = 0;
+    }
+    return value ? (int)value->valueFloat : defaultValue;
+}
+
+int Json_getBooleanInt (Json* value, const char* name, int defaultValue)
+{
+    value = Json_getItem(value, name);
+    if (value != NULL) {
+        if (value->type == Json_False) {
+            return 0;
+        }
+        if (value->type == Json_True) {
+            return 1;
+        }
+    }
+    return defaultValue;
 }
