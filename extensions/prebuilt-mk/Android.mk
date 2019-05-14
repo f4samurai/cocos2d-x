@@ -1,18 +1,18 @@
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
-LOCAL_MODULE    := cocos_extension_static
+LOCAL_MODULE    := ccets
 
-LOCAL_MODULE_FILENAME := libextension
+LOCAL_MODULE_FILENAME := libets
 
 LOCAL_ARM_MODE := arm
 
-LOCAL_SRC_FILES := ../../prebuilt/android/$(TARGET_ARCH_ABI)/libextension.a
+LOCAL_SRC_FILES := ../../prebuilt/android/$(TARGET_ARCH_ABI)/libets.a
 
-LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_internal_static
-LOCAL_WHOLE_STATIC_LIBRARIES += box2d_static
-LOCAL_WHOLE_STATIC_LIBRARIES += bullet_static
-#LOCAL_WHOLE_STATIC_LIBRARIES += cocos_network_static
+LOCAL_WHOLE_STATIC_LIBRARIES := cc_core
+#LOCAL_WHOLE_STATIC_LIBRARIES += ccnet
+LOCAL_WHOLE_STATIC_LIBRARIES += ext_box2d
+LOCAL_WHOLE_STATIC_LIBRARIES += ext_bullet
 
 LOCAL_CXXFLAGS += -fexceptions
 

@@ -2,20 +2,20 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := cocos2d_lua_android_static
+LOCAL_MODULE := cclua_android
 
-LOCAL_MODULE_FILENAME := libluacocos2dandroid
+LOCAL_MODULE_FILENAME := libluaccandroid
 
 LOCAL_ARM_MODE := arm
 
-LOCAL_SRC_FILES := ../../../../../prebuilt/android/$(TARGET_ARCH_ABI)/libluacocos2dandroid.a
+LOCAL_SRC_FILES := ../../../../../prebuilt/android/$(TARGET_ARCH_ABI)/libluaccandroid.a
 
 
 LOCAL_EXPORT_LDLIBS := -lGLESv2 \
                        -llog \
                        -landroid
 
-LUA_STATIC_LIB := luajit_static
+LUA_STATIC_LIB := ext_luajit
 LUA_IMPORT_PATH := lua/luajit/prebuilt/android
 LUA_INCLUDE_PATH := $(LOCAL_PATH)/../../../../external/lua/luajit/include
 
@@ -27,13 +27,13 @@ include $(PREBUILT_STATIC_LIBRARY)
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE    := cocos2d_lua_static
+LOCAL_MODULE    := cclua_static
 
-LOCAL_MODULE_FILENAME := libluacocos2d
+LOCAL_MODULE_FILENAME := libluacc
 
 LOCAL_ARM_MODE := arm
 
-LOCAL_SRC_FILES := ../../../../../prebuilt/android/$(TARGET_ARCH_ABI)/libluacocos2d.a
+LOCAL_SRC_FILES := ../../../../../prebuilt/android/$(TARGET_ARCH_ABI)/libluacc.a
 
 #Component
 #3d
@@ -71,11 +71,11 @@ $(LOCAL_PATH)/../../manual/ui \
 $(LOCAL_PATH)/../../manual/navmesh \
 $(LOCAL_PATH)/../../../../..
 
-LOCAL_WHOLE_STATIC_LIBRARIES := cocos2d_lua_android_static
+LOCAL_WHOLE_STATIC_LIBRARIES := cclua_android
 
-LOCAL_WHOLE_STATIC_LIBRARIES += cocos2dx_static
+LOCAL_WHOLE_STATIC_LIBRARIES += cc_static
 
 include $(PREBUILT_STATIC_LIBRARY)
 
 $(call import-module, $(LUA_IMPORT_PATH)/prebuilt-mk)
-$(call import-module, ./prebuilt-mk)
+$(call import-module, cocos/prebuilt-mk)

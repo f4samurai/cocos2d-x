@@ -1,7 +1,7 @@
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
-LOCAL_SRC_FILES := ../../../../prebuilt/android/$(TARGET_ARCH_ABI)/libpvmp3dec.a
+LOCAL_SRC_FILES := ../../../../prebuilt/android/$(TARGET_ARCH_ABI)/libext_pvmp3dec.a
 ifeq ($(TARGET_ARCH),arm)
 else
 endif
@@ -17,7 +17,7 @@ LOCAL_CFLAGS += -Werror
 LOCAL_CLANG := true
 LOCAL_SANITIZE := signed-integer-overflow
 
-LOCAL_MODULE := libpvmp3dec
+LOCAL_MODULE := ext_pvmp3dec
 
 LOCAL_ARM_MODE := arm
 

@@ -276,7 +276,7 @@ LOCAL_STATIC_LIBRARIES += ext_tiff
 LOCAL_STATIC_LIBRARIES += ext_webp
 LOCAL_STATIC_LIBRARIES += ext_chipmunk 
 LOCAL_STATIC_LIBRARIES += ext_zlib
-LOCAL_STATIC_LIBRARIES += ext_ssl
+#LOCAL_STATIC_LIBRARIES += ext_ssl
 LOCAL_STATIC_LIBRARIES += ext_recast
 LOCAL_STATIC_LIBRARIES += ext_bullet
 
@@ -308,7 +308,7 @@ LOCAL_MODULE_FILENAME := libcc
 LOCAL_STATIC_LIBRARIES := ccs
 LOCAL_STATIC_LIBRARIES += ccb
 LOCAL_STATIC_LIBRARIES += cc3d
-LOCAL_STATIC_LIBRARIES += ccnet
+#LOCAL_STATIC_LIBRARIES += ccnet
 LOCAL_STATIC_LIBRARIES += audio
 LOCAL_STATIC_LIBRARIES += spine
 
@@ -334,8 +334,8 @@ $(call import-module,extensions)
 $(call import-module,Box2D/prebuilt/android)
 $(call import-module,bullet/prebuilt/android)
 $(call import-module,recast)
-# $(call import-module,curl/prebuilt/android)
+# $(call import-module,curl/prebuilt/android) 
 $(call import-module,websockets/prebuilt/android)
 #$(call import-module,openssl/prebuilt/android)
 #$(call import-module,flatbuffers)
-$(call import-module,uv/prebuilt/android)
+#$(call import-module,uv/prebuilt/android)

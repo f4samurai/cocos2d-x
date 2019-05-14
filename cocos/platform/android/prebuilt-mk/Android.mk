@@ -2,11 +2,11 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := cocos2dxandroid_static
+LOCAL_MODULE := ccandroid
 
-LOCAL_MODULE_FILENAME := libcocos2dandroid
+LOCAL_MODULE_FILENAME := libccandroid
 
-LOCAL_SRC_FILES := ../../../../prebuilt/android/$(TARGET_ARCH_ABI)/libcocos2dandroid.a
+LOCAL_SRC_FILES := ../../../../prebuilt/android/$(TARGET_ARCH_ABI)/libccandroid.a
 
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/..
 

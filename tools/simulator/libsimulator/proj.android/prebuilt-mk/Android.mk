@@ -15,6 +15,6 @@ $(LOCAL_PATH)/../../lib/protobuf-lite
 
 
 
-LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static
+LOCAL_WHOLE_STATIC_LIBRARIES := cc_static
 
 include $(PREBUILT_STATIC_LIBRARY)
