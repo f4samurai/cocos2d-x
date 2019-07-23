@@ -296,7 +296,7 @@ void DataReaderHelper::addDataFromFile(const std::string& filePath)
 
     //! find the base file path
     std::string basefilePath = filePath;
-    size_t pos = basefilePath.find_last_of("/");
+    size_t pos = basefilePath.find_last_of('/');
 
     if (pos != std::string::npos)
     {
@@ -362,7 +362,7 @@ void DataReaderHelper::addDataFromFileAsync(const std::string& imagePath, const 
 
     //! find the base file path
     std::string basefilePath = filePath;
-    size_t pos = basefilePath.find_last_of("/");
+    size_t pos = basefilePath.find_last_of('/');
 
     if (pos != std::string::npos)
     {
@@ -1297,30 +1297,29 @@ void DataReaderHelper::addDataFromJsonCache(const std::string& fileContent, Data
         length =  DICTOOL->getArrayCount_json(json, CONFIG_FILE_PATH); // json[CONFIG_FILE_PATH].IsNull() ? 0 : json[CONFIG_FILE_PATH].Size();
         for (int i = 0; i < length; i++)
         {
-			const char *path = DICTOOL->getStringValueFromArray_json(json, CONFIG_FILE_PATH, i); // json[CONFIG_FILE_PATH][i].IsNull() ? nullptr : json[CONFIG_FILE_PATH][i].GetString();
+            const char *path = DICTOOL->getStringValueFromArray_json(json, CONFIG_FILE_PATH, i); // json[CONFIG_FILE_PATH][i].IsNull() ? nullptr : json[CONFIG_FILE_PATH][i].GetString();
             if (path == nullptr)
             {
                 CCLOG("load CONFIG_FILE_PATH error.");
                 return;
             }
-
-            std::string filePath = path;
-            filePath = filePath.erase(filePath.find_last_of("."));
             
-            std::string plistPath = filePath + ".plist";
-            std::string pngPath =  filePath + ".png";
-            if (FileUtils::getInstance()->isFileExist(dataInfo->baseFilePath + plistPath)
-                && FileUtils::getInstance()->isFileExist(dataInfo->baseFilePath + pngPath))
+            std::string filePath = path;
+            filePath = filePath.erase(filePath.find_last_of('.'));
+            
+            if (dataInfo->asyncStruct)
             {
-                if (dataInfo->asyncStruct)
-                {
-                    dataInfo->configFileQueue.push(filePath);
-                }
-                else
+                dataInfo->configFileQueue.push(filePath);
+            }
+            else
+            {
+                std::string plistPath = filePath + ".plist";
+                std::string pngPath =  filePath + ".png";
+                if (FileUtils::getInstance()->isFileExist(dataInfo->baseFilePath + plistPath) && FileUtils::getInstance()->isFileExist(dataInfo->baseFilePath + pngPath))
                 {
                     ValueMap dict = FileUtils::getInstance()->getValueMapFromFile(dataInfo->baseFilePath + plistPath);
                     if (dict.find("particleLifespan") != dict.end()) continue;
-
+                    
                     ArmatureDataManager::getInstance()->addSpriteFrameFromFile((dataInfo->baseFilePath + plistPath), (dataInfo->baseFilePath + pngPath), dataInfo->filename);
                 }
             }
@@ -1845,7 +1844,7 @@ void DataReaderHelper::decodeNode(BaseData *node, const rapidjson::Value& json, 
                             }
 
                             std::string filePath = path;
-                            filePath = filePath.erase(filePath.find_last_of("."));
+                            filePath = filePath.erase(filePath.find_last_of('.'));
 
                             if (dataInfo->asyncStruct)
                             {
