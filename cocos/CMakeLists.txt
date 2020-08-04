@@ -27,12 +27,20 @@
 # this CMakeLists is to generate Cocos2d-x Engine Library
 # build libcocos2d
 # build luacocos2d if BUILD_LUA_LIBS=ON
+cmake_minimum_required(VERSION 3.15)
 
 # The version number
 set(COCOS2D_X_VERSION 4.0)
 
 set(COCOS_CORE_LIB cocos2d)
 project(cocos2d_libs)
+
+if(NOT DEFINED BUILD_ENGINE_DONE)
+    set(COCOS2DX_ROOT_PATH ${CMAKE_CURRENT_LIST_DIR}/..)
+    set(CMAKE_MODULE_PATH ${COCOS2DX_ROOT_PATH}/cmake/Modules/)
+
+    include(CocosBuildSet)
+endif()
 
 include(2d/CMakeLists.txt)
 include(3d/CMakeLists.txt)
