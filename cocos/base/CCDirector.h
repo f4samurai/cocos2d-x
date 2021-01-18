@@ -724,6 +724,8 @@ protected:
 
     // GLView will recreate stats labels to fit visible rect
     friend class GLView;
+    
+    static Director* s_SharedDirector;    // DESKTOP
 };
 
 // FIXME: Added for backward compatibility in case
