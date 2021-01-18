@@ -60,7 +60,11 @@ static const int MAX_LOG_LENGTH = 16*1024;
 /**
  @brief Output Debug message.
  */
-void CC_DLL log(const char * format, ...) CC_FORMAT_PRINTF(1, 2);
+#ifndef PLATFORM_DESKTOP
+void CC_DLL log(const char * format, ...); CC_FORMAT_PRINTF(1, 2);
+#else
+void CC_DLL log(const char * format, ...);// DESKTOP
+#endif
 
 /** Console is helper class that lets the developer control the game from TCP connection.
  Console will spawn a new thread that will listen to a specified TCP port.
