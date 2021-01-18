@@ -363,7 +363,7 @@ protected:
     void onClear();
     void onClearDepth();
 
-    void onSaveToFile(const std::string& fileName, bool isRGBA = true);
+    virtual void onSaveToFile(const std::string& fileName, bool isRGBA = true); // DESKTOP
 
     void setupDepthAndStencil(int powW, int powH);
     
