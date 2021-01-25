@@ -157,7 +157,7 @@ public:
      * @js NA
      * @lua NA
      */
-    ~Director();
+    virtual ~Director();    // DESKTOP
     bool init();
 
     // attribute
@@ -608,7 +608,7 @@ protected:
 #endif
     
     /** calculates delta time since last time it was called */    
-    void calculateDeltaTime();
+    virtual void calculateDeltaTime();  // DESKTOP
 
     //textureCache creation or release
     void initTextureCache();
