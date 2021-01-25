@@ -374,7 +374,7 @@ string FileUtilsWin32::getWritablePath() const
 }
 
 // DESKTOP
-std::string getDownloadResourcePath(const std::string& dirname) const
+std::string FileUtilsWin32::getDownloadResourcePath(const std::string& dirname) const
 {
     return FileUtils::getInstance()->getDefaultResourceRootPath();
 }
