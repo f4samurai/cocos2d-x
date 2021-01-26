@@ -61,7 +61,7 @@ static const int MAX_LOG_LENGTH = 16*1024;
  @brief Output Debug message.
  */
 #ifndef PLATFORM_DESKTOP
-void CC_DLL log(const char * format, ...); CC_FORMAT_PRINTF(1, 2);
+void CC_DLL log(const char * format, ...) CC_FORMAT_PRINTF(1, 2);
 #else
 void CC_DLL log(const char * format, ...);// DESKTOP
 #endif

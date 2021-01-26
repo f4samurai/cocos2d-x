@@ -64,7 +64,7 @@ std::string toString(T arg)
 }
 
 #ifndef PLATFORM_DESKTOP
-std::string CC_DLL format(const char* format, ...); CC_FORMAT_PRINTF(1, 2);
+std::string CC_DLL format(const char* format, ...) CC_FORMAT_PRINTF(1, 2);
 #else
 std::string CC_DLL format(const char* format, ...); // DESKTOP
 #endif
