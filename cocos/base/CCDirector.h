@@ -352,7 +352,7 @@ public:
     /** Draw the scene.
      * This method is called every frame. Don't call it manually.
      */
-    void drawScene();
+    virtual void drawScene();   // DESKTOP
 
     // Memory Helper
 
