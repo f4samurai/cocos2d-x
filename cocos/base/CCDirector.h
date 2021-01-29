@@ -157,7 +157,7 @@ public:
      * @js NA
      * @lua NA
      */
-    ~Director();
+    virtual ~Director();    // DESKTOP
     bool init();
 
     // attribute
@@ -365,7 +365,7 @@ public:
     /** Draw the scene.
      * This method is called every frame. Don't call it manually.
      */
-    void drawScene();
+    virtual void drawScene();   // DESKTOP
 
     // Memory Helper
 
@@ -608,7 +608,7 @@ protected:
 #endif
     
     /** calculates delta time since last time it was called */    
-    void calculateDeltaTime();
+    virtual void calculateDeltaTime();  // DESKTOP
 
     //textureCache creation or release
     void initTextureCache();
@@ -724,6 +724,8 @@ protected:
 
     // GLView will recreate stats labels to fit visible rect
     friend class GLView;
+    
+    static Director* s_SharedDirector;    // DESKTOP
 };
 
 // FIXME: Added for backward compatibility in case

@@ -83,7 +83,8 @@ NS_CC_BEGIN
 // FIXME: it should be a Director ivar. Move it there once support for multiple directors is added
 
 // singleton stuff
-static Director *s_SharedDirector = nullptr;
+//static Director *s_SharedDirector = nullptr;  // DESKTOP
+Director* Director::s_SharedDirector = nullptr; // DESKTOP
 
 #define kDefaultFPS        60  // 60 frames per second
 extern const char* cocos2dVersion(void);

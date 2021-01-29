@@ -377,6 +377,12 @@ string FileUtilsWin32::getWritablePath() const
     return convertPathFormatToUnixStyle(StringWideCharToUtf8(retPath));
 }
 
+// DESKTOP
+std::string FileUtilsWin32::getDownloadResourcePath(const std::string& dirname) const
+{
+    return FileUtils::getInstance()->getDefaultResourceRootPath();
+}
+
 bool FileUtilsWin32::renameFile(const std::string &oldfullpath, const std::string& newfullpath) const
 {
     CCASSERT(!oldfullpath.empty(), "Invalid path");

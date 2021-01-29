@@ -38,8 +38,11 @@ subject to the following restrictions:
 #pragma warning(disable: 4556) // value of intrinsic immediate argument '4294967239' is out of range '0 - 255'
 #endif
 
-
+#if (CC_TARGET_PLATFORM != CC_PLATFORM_WIN32)
 #define BT_SHUFFLE(x,y,z,w) ((w)<<6 | (z)<<4 | (y)<<2 | (x))
+#else
+#define BT_SHUFFLE(x,y,z,w) (((w)<<6 | (z)<<4 | (y)<<2 | (x)) & 0xff)    // DESKTOP
+#endif
 //#define bt_pshufd_ps( _a, _mask ) (__m128) _mm_shuffle_epi32((__m128i)(_a), (_mask) )
 #define bt_pshufd_ps( _a, _mask ) _mm_shuffle_ps((_a), (_a), (_mask) )
 #define bt_splat3_ps( _a, _i ) bt_pshufd_ps((_a), BT_SHUFFLE(_i,_i,_i, 3) )
