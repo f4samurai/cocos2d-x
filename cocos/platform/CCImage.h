@@ -78,7 +78,7 @@ public:
         //! PNG
         PNG,
         //! TIFF
-        TIFF,  // 2021/02/04 Noriyoshi Okamoto
+        TIFF,  // cocos v4
         //! WebP
         WEBP,
         //! PVR
@@ -161,7 +161,7 @@ public:
 protected:
     bool initWithJpgData(const unsigned char *  data, ssize_t dataLen);
     bool initWithPngData(const unsigned char * data, ssize_t dataLen);
-    bool initWithTiffData(const unsigned char * data, ssize_t dataLen);  // 2021/02/04 Noriyoshi Okamoto
+    bool initWithTiffData(const unsigned char * data, ssize_t dataLen);  // cocos v4
     bool initWithWebpData(const unsigned char * data, ssize_t dataLen);
     bool initWithPVRData(const unsigned char * data, ssize_t dataLen);
     bool initWithPVRv2Data(const unsigned char * data, ssize_t dataLen);
@@ -218,7 +218,7 @@ protected:
     Format detectFormat(const unsigned char * data, ssize_t dataLen);
     bool isPng(const unsigned char * data, ssize_t dataLen);
     bool isJpg(const unsigned char * data, ssize_t dataLen);
-    bool isTiff(const unsigned char * data, ssize_t dataLen);  // 2021/02/04 Noriyoshi Okamoto
+    bool isTiff(const unsigned char * data, ssize_t dataLen);  // cocos v4
     bool isWebp(const unsigned char * data, ssize_t dataLen);
     bool isPvr(const unsigned char * data, ssize_t dataLen);
     bool isEtc(const unsigned char * data, ssize_t dataLen);

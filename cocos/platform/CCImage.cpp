@@ -83,7 +83,7 @@ extern "C"
 #include "png.h"
 #endif //CC_USE_PNG
 
-// 2021/02/04 Noriyoshi Okamoto
+// cocos v4
 #if CC_USE_TIFF
 #include "tiffio.h"
 #endif //CC_USE_TIFF
@@ -575,7 +575,7 @@ bool Image::initWithImageData(const unsigned char * data, ssize_t dataLen)
             ret = initWithJpgData(unpackedData, unpackedLen);
             break;
         case Format::TIFF:
-            ret = initWithTiffData(unpackedData, unpackedLen);  // 2021/02/04 Noriyoshi Okamoto
+            ret = initWithTiffData(unpackedData, unpackedLen);  // cocos v4
             break;
         case Format::WEBP:
             ret = initWithWebpData(unpackedData, unpackedLen);
@@ -674,6 +674,7 @@ bool Image::isJpg(const unsigned char * data, ssize_t dataLen)
     return memcmp(data, JPG_SOI, 2) == 0;
 }
 
+// cocos v4
 bool Image::isTiff(const unsigned char * data, ssize_t dataLen)
 {
     if (dataLen <= 4)
@@ -725,6 +726,7 @@ Image::Format Image::detectFormat(const unsigned char * data, ssize_t dataLen)
     {
         return Format::JPG;
     }
+    // cocos v4
     else if (isTiff(data, dataLen))
     {
         return Format::TIFF;
@@ -1079,7 +1081,7 @@ bool Image::initWithPngData(const unsigned char * data, ssize_t dataLen)
 #endif //CC_USE_PNG
 }
 
-// 2021/02/04 Noriyoshi Okamoto
+// cocos v4
 #if CC_USE_TIFF
 namespace
 {
