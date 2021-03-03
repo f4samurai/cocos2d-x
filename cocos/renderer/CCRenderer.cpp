@@ -681,7 +681,14 @@ void Renderer::drawCustomCommand(RenderCommand *command)
         _drawnVertices += cmd->getVertexDrawCount();
     }
     _drawnBatches++;
-    _commandBuffer->endRenderPass();
+
+	// sparkgear
+    if (cmd->getSparkGearCallback()){
+		void *_encoder = _commandBuffer->getNativeEncoder();
+		cmd->getSparkGearCallback()( _encoder );
+	}
+
+	_commandBuffer->endRenderPass();
 
     if (cmd->getAfterCallback()) cmd->getAfterCallback()();
 }

@@ -31,7 +31,8 @@
 #include "Macros.h"
 #include "Types.h"
 #include "RenderPassDescriptor.h"
-#include "CCStdC.h"
+//#include "CCStdC.h"
+#include "../../platform/CCStdC.h"
 #include "ProgramState.h"
 #include "VertexLayout.h"
 
@@ -183,6 +184,10 @@ public:
      * @param backRef Specifies back stencil reference value.
      */
     void setStencilReferenceValue(unsigned int frontRef, unsigned int backRef);
+
+
+	// sparkgear
+	virtual void* getNativeEncoder() = 0;
 
 protected:
     virtual ~CommandBuffer() = default;

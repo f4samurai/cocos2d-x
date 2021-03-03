@@ -169,6 +169,12 @@ public:
      */
     virtual void captureScreen(std::function<void(const unsigned char*, int, int)> callback) override ;
 
+
+	// sparkgear
+	virtual void *getNativeEncoder(){
+		return nullptr;
+	}
+
 private:
     struct Viewport
     {

@@ -172,6 +172,11 @@ public:
      */
     virtual void captureScreen(std::function<void(const unsigned char*, int, int)> callback) override;
     
+	// sparkgear
+	virtual void *getNativeEncoder() override {
+		return (void*)_mtlRenderEncoder;
+	}
+
 private:
     void prepareDrawing() const;
     void setTextures() const;

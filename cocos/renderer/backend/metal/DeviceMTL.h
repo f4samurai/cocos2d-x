@@ -138,6 +138,11 @@ public:
      * @return A MTLCommandQueue object.
      */
     inline id<MTLCommandQueue> getMTLCommandQueue() const { return _mtlCommandQueue; }
+
+    // sparkgear
+    virtual void* getNativeDevice() override {
+        return (void*)_mtlDevice;
+    }
     
 protected:
     /**

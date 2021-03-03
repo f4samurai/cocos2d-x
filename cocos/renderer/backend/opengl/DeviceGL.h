@@ -88,6 +88,9 @@ public:
      */
     virtual Program* newProgram(const std::string& vertexShader, const std::string& fragmentShader) override;
 
+	// sparkgear
+	virtual void* getNativeDevice() override;
+
 protected:
     /**
      * New a shaderModule, not auto released.

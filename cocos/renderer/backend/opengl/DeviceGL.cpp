@@ -106,4 +106,9 @@ Program* DeviceGL::newProgram(const std::string& vertexShader, const std::string
     return new (std::nothrow) ProgramGL(vertexShader, fragmentShader);
 }
 
+// sparkgear
+void* DeviceGL::getNativeDevice(){
+	return nullptr;
+}
+
 CC_BACKEND_END

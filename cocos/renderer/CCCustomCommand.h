@@ -206,7 +206,11 @@ public:
     */
     void setAfterCallback(const CallBackFunc &after) { _afterCallback = after; }
 
-    const CallBackFunc &getBeforeCallback() { return _beforeCallback; }
+    // sparkgear
+    void setSparkGearCallback(const std::function<void( void * )> &after) { _sparkgearCallback = after; }
+    const std::function<void( void * )>getSparkGearCallback() { return _sparkgearCallback; }
+
+	const CallBackFunc &getBeforeCallback() { return _beforeCallback; }
 
     const CallBackFunc &getAfterCallback() { return _afterCallback; }
 
@@ -236,6 +240,9 @@ protected:
 
     CallBackFunc _beforeCallback = nullptr;
     CallBackFunc _afterCallback = nullptr;
+
+	// sparkgear
+	std::function<void( void * )> _sparkgearCallback = nullptr;
 };
 
 NS_CC_END

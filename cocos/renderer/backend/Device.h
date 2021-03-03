@@ -127,6 +127,9 @@ public:
      */
     inline DeviceInfo* getDeviceInfo() const { return _deviceInfo; }
 
+	// sparkgear
+	virtual void* getNativeDevice() = 0;
+
 protected:
     /**
      * New a shaderModule, not auto released.
