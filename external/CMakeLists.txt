@@ -22,6 +22,7 @@ option(BUILD_EXT_MD5 "Build with internal md5 support" ON)
 option(BUILD_EXT_ZLIB "Build with internal zlib support" ON)
 option(BUILD_EXT_CURL "Build with internal curl support" ON)
 option(BUILD_EXT_UNZIP "Build with internal unzip support" ON)
+option(BUILD_EXT_TIFF "Build with internal tiff support" ON) 
 
 add_library(external empty.cpp)
 
@@ -100,6 +101,10 @@ if(BUILD_EXT_MD5)
     target_link_libraries(external ext_md5)
 endif(BUILD_EXT_MD5)
 
+if(BUILD_EXT_TIFF)
+    add_subdirectory(tiff)
+    target_link_libraries(external ext_tiff)
+endif(BUILD_EXT_MD5)
 
 # use lua/js specific libs by property to prevent conflict
 if(BUILD_LUA_LIBS)

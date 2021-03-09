@@ -95,6 +95,7 @@ public:
     float getDepth() const { return _depth; }
     /// Can use the result to change the descriptor content.
     inline PipelineDescriptor& getPipelineDescriptor() { return _pipelineDescriptor; }
+    inline void setProgramState(backend::ProgramState* state) { _pipelineDescriptor.programState = state; } // cocos v4
 
     const Mat4 & getMV() const { return _mv; }
 
