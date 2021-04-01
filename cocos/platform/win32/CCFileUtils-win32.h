@@ -48,6 +48,7 @@ public:
     /* override functions */
     bool init();
     virtual std::string getWritablePath() const override;
+    virtual std::string getDownloadResourcePath(const std::string& dirname) const override; // DESKTOP
     virtual bool isAbsolutePath(const std::string& strPath) const override;
     virtual std::string getSuitableFOpen(const std::string& filenameUtf8) const override;
     virtual long getFileSize(const std::string &filepath);

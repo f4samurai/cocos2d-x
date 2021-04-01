@@ -206,7 +206,7 @@ public:
      * @param callback When the file is save finished,it will callback this function.
      * @return Returns true if the operation is successful.
      */
-    bool saveToFile(const std::string& filename, Image::Format format, bool isRGBA = true, std::function<void (RenderTexture*, const std::string&)> callback = nullptr);
+    virtual bool saveToFile(const std::string& filename, Image::Format format, bool isRGBA = true, std::function<void (RenderTexture*, const std::string&)> callback = nullptr);    // DESKTOP
     
     /** Listen "come to background" message, and save render texture.
      * It only has effect on Android.
@@ -346,7 +346,7 @@ protected:
     void onEnd();
     void clearColorAttachment();
 
-    void onSaveToFile(const std::string& fileName, bool isRGBA = true, bool forceNonPMA = false);
+    virtual void onSaveToFile(const std::string& fileName, bool isRGBA = true, bool forceNonPMA = false); // DESKTOP
 
     bool         _keepMatrix = false;
     Rect         _rtTextureRect;
